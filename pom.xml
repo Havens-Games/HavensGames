@@ -4,19 +4,19 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>net.whg.havensgames</groupId>
-  <artifactId>PluginTemplate</artifactId>
+  <artifactId>HavensGames</artifactId>
   <version>0.1.0</version>
   <packaging>jar</packaging>
 
-  <name>PluginTemplate</name>
-  <url>https://github.com/Havens-Games/PluginTemplate</url>
+  <name>HavensGames</name>
+  <url>https://github.com/Havens-Games/HavensGames</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>16</maven.compiler.source>
     <maven.compiler.target>16</maven.compiler.target>
     <java.version>16</java.version>
-    <javaplugin.path>net.whg.plugintemplate.PluginTemplate</javaplugin.path>
+    <javaplugin.path>net.whg.havensgames.HavensGames</javaplugin.path>
   </properties>
 
   <repositories>
@@ -32,6 +32,20 @@
       <artifactId>paper-api</artifactId>
       <version>1.17.1-R0.1-SNAPSHOT</version>
       <scope>provided</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.7.2</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-all -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.10.19</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
