@@ -17,10 +17,8 @@
     <maven.compiler.target>16</maven.compiler.target>
     <java.version>16</java.version>
     <javaplugin.path>net.whg.havensgames.HavensGames</javaplugin.path>
-    <properties>
-      <sonar.organization>thedudefromci</sonar.organization>
-      <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    </properties>
+    <sonar.organization>thedudefromci</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <repositories>
