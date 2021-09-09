@@ -47,17 +47,20 @@ public final class MessageUtils {
      * @return The color-coded list string.
      */
     private static String formatArray(Object[] array, MessageFormatStyle style) {
-        var str = style.getArgumentColor().toString();
+        var str = new StringBuilder(style.getArgumentColor().toString());
 
         var first = true;
         for (var elem : array) {
-            if (!first)
-                str += style.getBaseColor() + ", " + style.getArgumentColor();
+            if (!first) {
+                str.append(style.getBaseColor());
+                str.append(", ");
+                str.append(style.getArgumentColor());
+            }
 
-            str += elem;
+            str.append(elem);
             first = false;
         }
 
-        return str;
+        return str.toString();
     }
 }
