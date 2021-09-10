@@ -4,7 +4,9 @@ import java.util.logging.Logger;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.whg.havensgames.cmdformat.CommandHandler;
 import net.whg.havensgames.logging.LoggingHandler;
+import net.whg.havensgames.utils.SystemCommand;
 
 /**
  * The HavensGames official plugin.
@@ -28,6 +30,21 @@ public class HavensGames extends JavaPlugin {
     @Override
     public void onEnable() {
         setLoggingHandler(new LoggingHandler(getLogger()));
+
+        loadCommand("system", new SystemCommand());
+
+        HavensGames.log.logInfo("Enabled HavensGames plugin.");
+    }
+
+    /**
+     * Loads a command by name and registers the command executor.
+     * 
+     * @param commandName - The command name.
+     * @param handler     - The command handler.
+     */
+    private void loadCommand(String commandName, CommandHandler handler) {
+        HavensGames.log.logInfo("Loading %s command.", commandName);
+        getCommand(commandName).setExecutor(handler);
     }
 
     /**
@@ -35,6 +52,7 @@ public class HavensGames extends JavaPlugin {
      */
     @Override
     public void onDisable() {
+        HavensGames.log.logInfo("Disabled HavensGames plugin.");
         setLoggingHandler(new LoggingHandler(Logger.getLogger(HavensGames.class.toString())));
     }
 }
