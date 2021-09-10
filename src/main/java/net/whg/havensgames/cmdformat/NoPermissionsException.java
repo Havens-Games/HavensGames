@@ -5,6 +5,10 @@ package net.whg.havensgames.cmdformat;
  * command.
  */
 public class NoPermissionsException extends CommandException {
+    public NoPermissionsException() {
+        this("You do not have permission to use this command!");
+    }
+
     public NoPermissionsException(String message) {
         super(message);
     }

@@ -8,6 +8,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import net.whg.havensgames.HavensGames;
@@ -111,12 +112,38 @@ public abstract class CommandHandler implements CommandExecutor {
             return true;
 
         try {
+            checkSubcommandState(sender, action);
             action.execute(sender, args);
-            return true;
+        } catch (InternalCommandException e) {
+            e.printToPlayer(sender);
+            e.printStackTrace();
         } catch (CommandException e) {
             e.printToPlayer(sender);
-            return true;
+        } catch (Exception e) {
+            var internal = new InternalCommandException(e);
+            internal.printToPlayer(sender);
+            internal.printStackTrace();
         }
+
+        return true;
+    }
+
+    /**
+     * Checks if the command sender meets the requirements provided by the
+     * subcommand to be executed. Throws a corresponding command exception if the
+     * requirements are not met.
+     * 
+     * @param sender     - The command sender.
+     * @param subcommand - The subcommand to check against.
+     * @throws CommandException If the command sender fails to meet one of the
+     *                          requirements provided by the subcommand.
+     */
+    private void checkSubcommandState(CommandSender sender, Subcommand subcommand) throws CommandException {
+        if (subcommand.requiresOp() && !sender.isOp())
+            throw new NoPermissionsException();
+
+        if (subcommand.requiresNoConsole() && !(sender instanceof Player))
+            throw new NoConsoleException();
     }
 
     /**

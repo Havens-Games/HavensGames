@@ -98,6 +98,28 @@ public abstract class Subcommand {
     }
 
     /**
+     * Whether or not this subcommand requires the command sender to be a server
+     * operator or not.
+     * 
+     * @return True if the command sender must be a server operator. False
+     *         otherwise.
+     */
+    public boolean requiresOp() {
+        return false;
+    }
+
+    /**
+     * Whether or not this subcommand requires the command sender to be a player and
+     * not a console.
+     * 
+     * @return True if the command sender must be a player. False if the command
+     *         sender is allowed to be a console.
+     */
+    public boolean requiresNoConsole() {
+        return false;
+    }
+
+    /**
      * Executes this subcommand.
      * 
      * @param sender - The command sender.
