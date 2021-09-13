@@ -7,6 +7,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.whg.havensgames.cmdformat.CommandHandler;
 import net.whg.havensgames.logging.LoggingHandler;
 import net.whg.havensgames.utils.SystemCommand;
+import net.whg.havensgames.warp.WarpCommand;
+import net.whg.havensgames.warp.WarpList;
+import net.whg.havensgames.warp.WarpPadCommand;
 
 /**
  * The HavensGames official plugin.
@@ -31,7 +34,10 @@ public class HavensGames extends JavaPlugin {
     public void onEnable() {
         setLoggingHandler(new LoggingHandler(getLogger()));
 
+        var warpList = new WarpList(this);
         loadCommand("system", new SystemCommand());
+        loadCommand("warp", new WarpCommand(warpList));
+        loadCommand("warppad", new WarpPadCommand(warpList));
 
         HavensGames.log.logInfo("Enabled HavensGames plugin.");
     }
