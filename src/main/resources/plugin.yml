@@ -2,8 +2,7 @@ name: ${project.artifactId}
 main: ${javaplugin.path}
 version: ${project.version}
 api-version: 1.17
-depend: []
-softdepend: [ModelEngine, MythicMobs, ItemsAdder]
+depend: [Citizens, ModelEngine, MythicMobs, ItemsAdder]
 commands:
   system:
     description: A set of admin-only utility subcommands.
