@@ -8,16 +8,16 @@ import com.google.common.io.Files;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
-import net.whg.havensgames.HavensGames;
-import net.whg.havensgames.cmdformat.CommandException;
-import net.whg.havensgames.cmdformat.InternalCommandException;
-import net.whg.havensgames.cmdformat.Subcommand;
+import net.whg.utils.WraithLib;
+import net.whg.utils.cmdformat.CommandException;
+import net.whg.utils.cmdformat.InternalCommandException;
+import net.whg.utils.cmdformat.Subcommand;
 
 public class ReloadModelsSubcommand extends Subcommand {
 
     @Override
     public void execute(CommandSender sender, String[] args) throws CommandException {
-        HavensGames.log.logInfo("Reloading all model files.");
+        WraithLib.log.logInfo("Reloading all model files.");
 
         var console = Bukkit.getConsoleSender();
         Bukkit.dispatchCommand(console, "meg reload");
@@ -64,7 +64,7 @@ public class ReloadModelsSubcommand extends Subcommand {
                 "data" + File.separatorChar + "resource_pack" + File.separatorChar + "assets");
 
         var modifiedFiles = mergeFolders(modelEngineAssets, itemsAdderAssets, 0);
-        HavensGames.log.logInfo("Transferred %s files from ModelEngine to ItemsAdder.", modifiedFiles);
+        WraithLib.log.logInfo("Transferred %s files from ModelEngine to ItemsAdder.", modifiedFiles);
     }
 
     /**

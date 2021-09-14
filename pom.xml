@@ -19,6 +19,7 @@
     <javaplugin.path>net.whg.havensgames.HavensGames</javaplugin.path>
     <sonar.organization>thedudefromci</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <wraithlib.version>0.3.0</wraithlib.version>
   </properties>
 
   <repositories>
@@ -56,6 +57,13 @@
       <version>2.0.28-SNAPSHOT</version>
       <type>jar</type>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.whg.havensgames</groupId>
+      <artifactId>WraithLib</artifactId>
+      <version>${wraithlib.version}</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/../WraithLib/target/WraithLib-${wraithlib.version}.jar</systemPath>
     </dependency>
     <!-- Unit Tests -->
     <dependency>

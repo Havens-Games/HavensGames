@@ -1,6 +1,6 @@
 package net.whg.havensgames.utils;
 
-import net.whg.havensgames.cmdformat.CommandHandler;
+import net.whg.utils.cmdformat.CommandHandler;
 
 /**
  * A handler for executing admin-only utility commands. The "system" command
