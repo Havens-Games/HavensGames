@@ -36,6 +36,10 @@
       <id>everything</id>
       <url>http://repo.citizensnpcs.co/</url>
     </repository>
+    <repository>
+      <id>placeholderapi</id>
+      <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+    </repository>
   </repositories>
 
   <dependencies>
@@ -64,6 +68,12 @@
       <version>${wraithlib.version}</version>
       <scope>system</scope>
       <systemPath>${project.basedir}/../WraithLib/target/WraithLib-${wraithlib.version}.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>me.clip</groupId>
+      <artifactId>placeholderapi</artifactId>
+      <version>2.10.10</version>
+      <scope>provided</scope>
     </dependency>
     <!-- Unit Tests -->
     <dependency>
