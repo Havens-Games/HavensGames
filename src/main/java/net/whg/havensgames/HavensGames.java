@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.whg.havensgames.spawn.levitationpads.LevitationPadList;
 import net.whg.havensgames.spawn.levitationpads.LevitationPadListener;
 import net.whg.havensgames.spawn.levitationpads.cmd.LevitationPadCommand;
+import net.whg.havensgames.spawn.misc.DisablePortalsListener;
 import net.whg.havensgames.spawn.misc.TeleportOutOfVoidListener;
 import net.whg.havensgames.utils.SystemCommand;
 import net.whg.utils.WraithLib;
@@ -33,6 +34,7 @@ public class HavensGames extends JavaPlugin {
         registerEvents(locationTriggers);
         registerEvents(new LevitationPadListener(levitationPadList));
         registerEvents(new TeleportOutOfVoidListener());
+        registerEvents(new DisablePortalsListener());
 
         WraithLib.log.logInfo("Enabled HavensGames plugin.");
     }
