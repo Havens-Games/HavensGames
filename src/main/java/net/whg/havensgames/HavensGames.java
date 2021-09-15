@@ -1,14 +1,17 @@
 package net.whg.havensgames;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.whg.havensgames.spawn.levitationpads.LevitationPadList;
+import net.whg.havensgames.spawn.levitationpads.LevitationPadListener;
+import net.whg.havensgames.spawn.levitationpads.cmd.LevitationPadCommand;
 import net.whg.havensgames.utils.SystemCommand;
 import net.whg.utils.WraithLib;
 import net.whg.utils.cmdformat.CommandHandler;
-import net.whg.utils.warp.WarpCommand;
-import net.whg.utils.warp.WarpList;
-import net.whg.utils.warp.WarpPadCommand;
+import net.whg.utils.events.location.LocationTriggerListener;
 
 /**
  * The HavensGames official plugin.
@@ -20,10 +23,14 @@ public class HavensGames extends JavaPlugin {
      */
     @Override
     public void onEnable() {
-        var warpList = new WarpList(this);
+        var locationTriggers = new LocationTriggerListener();
+        var levitationPadList = new LevitationPadList(locationTriggers);
+
         loadCommand("system", new SystemCommand());
-        loadCommand("warp", new WarpCommand(warpList));
-        loadCommand("warppad", new WarpPadCommand(warpList));
+        loadCommand("levitationpad", new LevitationPadCommand(levitationPadList));
+
+        registerEvents(locationTriggers);
+        registerEvents(new LevitationPadListener(levitationPadList));
 
         WraithLib.log.logInfo("Enabled HavensGames plugin.");
     }
@@ -37,6 +44,16 @@ public class HavensGames extends JavaPlugin {
     private void loadCommand(String commandName, CommandHandler handler) {
         WraithLib.log.logInfo("Loading %s command.", commandName);
         getCommand(commandName).setExecutor(handler);
+    }
+
+    /**
+     * Loads an event listener and registers it with Bukkit.
+     * 
+     * @param listener - The event listener to register.
+     */
+    private void registerEvents(Listener listener) {
+        WraithLib.log.logInfo("Registered event listeners for %s.", listener.getClass().getSimpleName());
+        Bukkit.getPluginManager().registerEvents(listener, this);
     }
 
     /**

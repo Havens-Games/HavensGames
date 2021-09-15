@@ -13,8 +13,15 @@ import net.whg.utils.cmdformat.CommandException;
 import net.whg.utils.cmdformat.InternalCommandException;
 import net.whg.utils.cmdformat.Subcommand;
 
+/**
+ * Reloads all 3D models that are managed by ModelEngine, then copies all
+ * generated resource pack files into the ItemsAdder plugin and triggers it to
+ * be recompiled and sent to all players.
+ */
 public class ReloadModelsSubcommand extends Subcommand {
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void execute(CommandSender sender, String[] args) throws CommandException {
         WraithLib.log.logInfo("Reloading all model files.");
@@ -31,16 +38,25 @@ public class ReloadModelsSubcommand extends Subcommand {
         Bukkit.dispatchCommand(console, "iazip");
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getUsage() {
         return "";
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public String getName() {
         return "reload_models";
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean requiresOp() {
         return true;

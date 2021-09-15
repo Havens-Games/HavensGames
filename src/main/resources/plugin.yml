@@ -10,3 +10,5 @@ commands:
     description: Creates or teleports to existing warp points.
   warppad:
     description: Handles the management of warp pads.
+  levitationpad:
+    description: Handles the management of levitation pads.
