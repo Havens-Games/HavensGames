@@ -1,6 +1,7 @@
 package net.whg.havensgames;
 
 import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,6 +28,9 @@ public class HavensGames extends JavaPlugin {
      */
     @Override
     public void onEnable() {
+        WraithLib.log.logInfo("Loading survival world.");
+        Bukkit.createWorld(new WorldCreator("survival"));
+
         var locationTriggers = new LocationTriggerListener();
         var levitationPadList = new LevitationPadList(locationTriggers);
 
