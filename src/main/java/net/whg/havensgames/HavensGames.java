@@ -10,7 +10,6 @@ import net.whg.havensgames.spawn.levitationpads.LevitationPadList;
 import net.whg.havensgames.spawn.levitationpads.LevitationPadListener;
 import net.whg.havensgames.spawn.levitationpads.cmd.LevitationPadCommand;
 import net.whg.havensgames.spawn.misc.DisablePortalsListener;
-import net.whg.havensgames.spawn.misc.JoinMessagesListener;
 import net.whg.havensgames.spawn.misc.SpawnInvulnerabilityListener;
 import net.whg.havensgames.spawn.misc.TeleportOutOfVoidListener;
 import net.whg.havensgames.utils.SystemCommand;
@@ -42,7 +41,6 @@ public class HavensGames extends JavaPlugin {
         registerEvents(new TeleportOutOfVoidListener());
         registerEvents(new DisablePortalsListener());
         registerEvents(new SpawnInvulnerabilityListener());
-        registerEvents(new JoinMessagesListener());
 
         WraithLib.log.logInfo("Enabled HavensGames plugin.");
     }
