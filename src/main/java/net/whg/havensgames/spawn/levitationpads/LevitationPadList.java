@@ -46,7 +46,9 @@ public class LevitationPadList {
         if (savedLevitationPads != null) {
             for (var levitationPadName : savedLevitationPads.getKeys(false)) {
                 var levitationPad = (LevitationPad) savedLevitationPads.get(levitationPadName);
+
                 levitationPads.add(levitationPad);
+                locationTriggers.registerLocationTrigger(levitationPad.locationTrigger());
             }
         }
     }
