@@ -2,10 +2,12 @@ package net.whg.havensgames;
 
 import org.bukkit.Bukkit;
 import org.bukkit.WorldCreator;
+import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.whg.havensgames.spawn.levitationpads.LevitationPad;
 import net.whg.havensgames.spawn.levitationpads.LevitationPadList;
 import net.whg.havensgames.spawn.levitationpads.LevitationPadListener;
 import net.whg.havensgames.spawn.levitationpads.cmd.LevitationPadCommand;
@@ -21,6 +23,13 @@ import net.whg.utils.events.location.LocationTriggerListener;
  * The HavensGames official plugin.
  */
 public class HavensGames extends JavaPlugin {
+    /**
+     * Initialize configuration serializable classes.
+     */
+    static {
+        ConfigurationSerialization.registerClass(LevitationPad.class, "LevitationPad");
+    }
+
     /**
      * Called when the plugin is enabled to initialize all managers, handlers, and
      * load resources.
